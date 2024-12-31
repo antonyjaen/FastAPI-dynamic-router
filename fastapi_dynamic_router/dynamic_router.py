@@ -31,9 +31,13 @@ class DynamicRouter:
         """
         self.app = app
         
-        # Store configuration in state
-        if not hasattr(app, 'state'):
-            app.state.dynamic_router_config = {}
+        # Initialize configuration in state
+        if not hasattr(app.state, 'dynamic_router_config'):
+            app.state.dynamic_router_config = {
+                'case_sensitive': True,
+                'prefix': ''
+            }
+        
         app.state.dynamic_router_config.update({
             'case_sensitive': True,
             'prefix': ''
